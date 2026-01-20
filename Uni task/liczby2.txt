@@ -1,0 +1,7 @@
+Sebastian Sobczyñski
+Suma liczb: 1162.86
+Iloœæ liczb: 18
+Œrednia liczb: 64.6033
+Iloœæ zer:2
+Iloœæ liczb dodatnich: 11
+Iloœæ liczb ujemnych: 5
