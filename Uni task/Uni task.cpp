@@ -5,61 +5,56 @@
 
 using namespace std;
 
-int main()
-{
-    setlocale(LC_CTYPE, "Polish");
-
+void zadanie1() {
     string nazwisko = "Sebastian Sobczyński", temp = "";
-
-    //Zadanie 1.
     double temp_num = 0.0, suma = 0.0;
     int ilosc = 0, mniej = 0, wiecej = 0, zero = 0;
 
     ifstream liczby("liczby.txt");
     ofstream liczby2("liczby2.txt");
     if (liczby.is_open() && liczby2.is_open()) {
-		cout << "Oba pliki zostały otwarte poprawnie." << endl;
+        cout << "Oba pliki zostały otwarte poprawnie." << endl;
 
         while (getline(liczby, temp)) {
-			temp_num = stod(temp);
+            temp_num = stod(temp);
             ilosc++;
-			suma += temp_num;
+            suma += temp_num;
             if (temp_num > 0) {
-				wiecej++;
+                wiecej++;
             }
             else if (temp_num < 0) {
                 mniej++;
             }
             else {
                 zero++;
-			}
+            }
         }
         liczby2 << nazwisko << endl;
         liczby2 << "Suma liczb: " << suma << endl;
-		liczby2 << "Ilość liczb: " << ilosc << endl;
+        liczby2 << "Ilość liczb: " << ilosc << endl;
         liczby2 << "Średnia liczb: " << (suma / ilosc) << endl;
         liczby2 << "Ilość zer:" << zero << endl;
-		liczby2 << "Ilość liczb dodatnich: " << wiecej << endl;
+        liczby2 << "Ilość liczb dodatnich: " << wiecej << endl;
         liczby2 << "Ilość liczb ujemnych: " << mniej << endl;
         liczby.close();
         liczby2.close();
 
-		cout << "Plik został zapisany poprawnie." << endl;
+        cout << "Plik został zapisany poprawnie." << endl;
     }
     else {
         cout << "Nie można otworzyć jednego z plików." << endl;
 
     }
+}
 
-    //Zadanie 2.
-
-    string rownanie = "";
+void zadanie2() {
+    string rownanie = "", temp = "";
     char znak;
     bool poprawnosc = false;
     char rownania[] = { '+', '-', '*', '/' };
     double a, b, wynik;
-	ifstream dzialania("dzialania.txt");
-	ofstream dzialania2("dzialania2.txt");
+    ifstream dzialania("dzialania.txt");
+    ofstream dzialania2("dzialania2.txt");
 
     if (dzialania.is_open() && dzialania2.is_open()) {
         cout << "Oba pliki zostały otwarte poprawnie." << endl;
@@ -84,7 +79,7 @@ int main()
                     switch (i) {
                     case 0:
                         wynik = a + b;
-                        
+
                         dzialania2 << rownanie + " = ";
                         dzialania2 << setprecision(2) << wynik << endl;
                         break;
@@ -126,9 +121,9 @@ int main()
     else {
         cout << "Pliki nie zostały otwarte." << endl;
     }
+}
 
-    //Zadanie 3.
-
+void zadanie3() {
     ofstream znaki("znaki.txt");
     ofstream cyfry("cyfry.txt");
     ofstream litery("litery.txt");
@@ -164,5 +159,15 @@ int main()
     else {
         cout << "Nie otwarto jednego z trzech plików.";
     }
+}
+
+int main()
+{
+    setlocale(LC_CTYPE, "Polish");
+
+    zadanie1();
+    zadanie2();
+    zadanie3();
+
     return 0;
 }
