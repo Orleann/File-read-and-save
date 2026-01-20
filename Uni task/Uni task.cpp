@@ -127,5 +127,42 @@ int main()
         cout << "Pliki nie zostały otwarte." << endl;
     }
 
+    //Zadanie 3.
+
+    ofstream znaki("znaki.txt");
+    ofstream cyfry("cyfry.txt");
+    ofstream litery("litery.txt");
+
+    char input = ' ';
+    string full = "";
+
+    if (znaki.is_open() && cyfry.is_open() && litery.is_open()) {
+        cout << "Wszystkie trzy pliki zostały otwarte poprawnie." << endl;
+
+        do {
+            cin.get(input);
+            if (input != ' ') {
+                full += input;
+            }
+        } while (input != ' ');
+
+        for (int i = 0; i < full.size(); i++) {
+            if ((int(full[i]) >= 97 && int(full[i]) <= 122) || (int(full[i]) >= 65 && int(full[i]) <= 90)) {
+                litery << full[i];
+            }
+            else if (int(full[i]) >= 48 && int(full[i]) <= 57) {
+                cyfry << full[i];
+            }
+            else {
+                znaki << full[i];
+            }
+        }
+        znaki.close();
+        cyfry.close();
+        litery.close();
+    }
+    else {
+        cout << "Nie otwarto jednego z trzech plików.";
+    }
     return 0;
 }
